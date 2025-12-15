@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love 💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 0, 100, 0.4);
+            animation: float 6s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        header {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .message-box {
+            background-color: #fff5f7;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #ff7eb3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .message-box h2 {
+            color: #ff758c;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .message-box p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .player-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+        
+        .song-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .album-cover {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+            border: 3px solid #ffafbd;
+        }
+        
+        .song-details h3 {
+            color: #ff758c;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+        
+        .song-details p {
+            color: #777;
+            font-size: 1.1rem;
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .control-btn {
+            background: #ff7eb3;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(255, 126, 179, 0.4);
+        }
+        
+        .control-btn:hover {
+            background: #ff758c;
+            transform: scale(1.1);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .volume-control i {
+            color: #ff7eb3;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .volume-slider {
+            width: 200px;
+            height: 6px;
+            -webkit-appearance: none;
+            background: #ffafbd;
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ff758c;
+            cursor: pointer;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .love-note {
+            font-style: italic;
+            color: #ff7eb3;
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .song-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .album-cover {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .player-controls {
+                flex-wrap: wrap;
+            }
+            
+            .control-btn {
+                margin: 5px 10px;
+            }
+        }
+        
+        .play-notice {
+            background-color: #f0f9ff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            color: #ff758c;
+            font-weight: 600;
+            border: 2px dashed #ffafbd;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Floating hearts background -->
+        <div class="hearts" id="hearts-container"></div>
+        
+        <header>
+            <h1>For My Beautiful Babe 💕</h1>
+            <p class="subtitle">This song is for you, my love</p>
+        </header>
+        
+        <div class="content">
+            <div class="message-box">
+                <h2>My Dearest Love,</h2>
+                <p>Every time I think of you, my heart fills with joy. This song reminds me of our beautiful journey together. I hope it brings a smile to your face, just like you bring happiness to my life every single day. No matter where life takes us, always remember how deeply I love you. You are my everything.</p>
+                <p style="margin-top: 15px; text-align: right; font-weight: 600;">Forever yours,<br>Your Love ❤️</p>
+            </div>
+            
+            <div class="player-container">
+                <div class="song-info">
+                    <img src="img/Gemini_Generated_Image_dm95qjdm95qjdm95.png" alt="Love Song Album Cover" class="album-cover">
+                    <div class="song-details">
+                        <h3>Perfect</h3>
+                        <p>Ed Sheeran</p>
+                        <p>From the album ÷ (Divide)</p>
+                        <p><i class="fas fa-clock"></i> 4:23</p>
+                    </div>
+                </div>
+                
+                <div class="play-notice" id="play-notice">
+                    <i class="fas fa-music"></i> Song will start playing automatically for you, my love!
+                </div>
+                
+                <div class="player-controls">
+                    <button class="control-btn" id="prev-btn">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="control-btn" id="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn" id="pause-btn">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="control-btn" id="next-btn">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                
+                <div class="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" min="0" max="100" value="70" class="volume-slider" id="volume-slider">
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Made with <i class="fas fa-heart" style="color: #ff758c;"></i> for the most amazing person in my life</p>
+            <p class="love-note">This website will always play our song when you open it</p>
+            <p class="love-note">From SmartDev</p>
+
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="love-song" loop>
+        <source src="song/Vengaboys_-_Shalala_Lala_(mp3.pm).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const heartCount = 25;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                
+                // Random position
+                const leftPos = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const size = Math.random() * 20 + 10;
+                
+                heart.style.left = `${leftPos}%`;
+                heart.style.fontSize = `${size}px`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // DOM elements
+        const audioPlayer = document.getElementById('love-song');
+        const playBtn = document.getElementById('play-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const volumeSlider = document.getElementById('volume-slider');
+        const playNotice = document.getElementById('play-notice');
+        
+        // Set initial volume
+        audioPlayer.volume = volumeSlider.value / 100;
+        
+        // Auto-play the song when page loads
+        window.addEventListener('load', function() {
+            // Show a brief message before playing
+            setTimeout(() => {
+                audioPlayer.play().then(() => {
+                    playNotice.innerHTML = '<i class="fas fa-check-circle"></i> Now playing our special song!';
+                    playNotice.style.backgroundColor = '#f0fff0';
+                    playNotice.style.color = '#4CAF50';
+                    
+                    // Change button state
+                    playBtn.style.display = 'none';
+                    pauseBtn.style.display = 'flex';
+                }).catch(error => {
+                    // If autoplay is blocked, show instruction
+                    playNotice.innerHTML = '<i class="fas fa-exclamation-circle"></i> Click the play button to start our song!';
+                    playNotice.style.backgroundColor = '#fff0f0';
+                    playNotice.style.color = '#ff5252';
+                    playNotice.style.animation = 'none';
+                });
+            }, 1000);
+        });
+        
+        // Play button click
+        playBtn.addEventListener('click', function() {
+            audioPlayer.play();
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'flex';
+            playNotice.innerHTML = '<i class="fas fa-check-circle"></i> Now playing our special song!';
+            playNotice.style.backgroundColor = '#f0fff0';
+            playNotice.style.color = '#4CAF50';
+        });
+        
+        // Pause button click
+        pauseBtn.addEventListener('click', function() {
+            audioPlayer.pause();
+            playBtn.style.display = 'flex';
+            pauseBtn.style.display = 'none';
+            playNotice.innerHTML = '<i class="fas fa-pause-circle"></i> Song paused. Click play to continue.';
+            playNotice.style.backgroundColor = '#fff9f0';
+            playNotice.style.color = '#ff9800';
+        });
+        
+        // Previous button click
+        prevBtn.addEventListener('click', function() {
+            // Restart the song
+            audioPlayer.currentTime = 0;
+            playNotice.innerHTML = '<i class="fas fa-redo"></i> Restarted our song from the beginning!';
+            playNotice.style.backgroundColor = '#f0f9ff';
+            playNotice.style.color = '#2196F3';
+            
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playBtn.style.display = 'none';
+                pauseBtn.style.display = 'flex';
+            }
+        });
+        
+        // Next button click (in this case, just restart as we have one song)
+        nextBtn.addEventListener('click', function() {
+            audioPlayer.currentTime = 0;
+            audioPlayer.play();
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'flex';
+            playNotice.innerHTML = '<i class="fas fa-play-circle"></i> Playing our song again!';
+            playNotice.style.backgroundColor = '#f0fff0';
+            playNotice.style.color = '#4CAF50';
+        });
+        
+        // Volume control
+        volumeSlider.addEventListener('input', function() {
+            audioPlayer.volume = this.value / 100;
+        });
+        
+        // Initialize floating hearts
+        createHearts();
+        
+        // Add a message in console for fun
+        console.log("%c💖 For my beautiful babe 💖", "color: #ff758c; font-size: 18px; font-weight: bold;");
+        console.log("%cThis website plays our special song every time you open it!", "color: #ff7eb3; font-size: 14px;");
+    </script>
+</body>
+</html>
